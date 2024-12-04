@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://b243mw2dwhof6"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_qlgcc"]
+[ext_resource type="Texture2D" uid="uid://ejhkgaobleum" path="res://menubg.jpg" id="2_51see"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gegjy"]
+font_size = 72
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlgcc")
+
+[node name="MenuBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_51see")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 144.0
+offset_right = 370.0
+offset_bottom = 167.0
+text = "Kaka's Ultra Adventures"
+label_settings = SubResource("LabelSettings_gegjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuItems" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayCaverna" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 360.0
+offset_right = 273.0
+offset_bottom = 417.0
+text = "Nível Caverna"
+
+[node name="PlayFloresta" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 360.0
+offset_right = 465.0
+offset_bottom = 417.0
+text = "Nível Floresta"
+
+[node name="PlayAgua" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 360.0
+offset_right = 657.0
+offset_bottom = 417.0
+text = "Nível Água"
+
+[node name="PlayAr" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 360.0
+offset_right = 849.0
+offset_bottom = 417.0
+text = "Nível Ar"
+
+[node name="PlayMarte" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 360.0
+offset_right = 1041.0
+offset_bottom = 417.0
+text = "Nível Marte"
+
+[connection signal="pressed" from="MenuItems/PlayCaverna" to="." method="_on_play_caverna_pressed"]
