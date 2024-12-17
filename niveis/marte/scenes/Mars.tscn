@@ -1,0 +1,224 @@
+[gd_scene load_steps=27 format=3 uid="uid://cw3q7t8coffv6"]
+
+[ext_resource type="PackedScene" uid="uid://b33bhrgedy24a" path="res://niveis/marte/scenes/Player.tscn" id="1_b6evm"]
+[ext_resource type="Script" path="res://niveis/marte/scripts/CameraMovement.gd" id="3_7qwd1"]
+[ext_resource type="PackedScene" uid="uid://btb31cmejqtte" path="res://niveis/marte/scenes/Tile.tscn" id="3_cwfvk"]
+[ext_resource type="Script" path="res://niveis/marte/scripts/LeverManager.gd" id="3_qrwog"]
+[ext_resource type="PackedScene" uid="uid://dt5umfpwtev7w" path="res://niveis/marte/scenes/Friend.tscn" id="4_emv6s"]
+[ext_resource type="PackedScene" uid="uid://bcfsubgeesbua" path="res://niveis/marte/scenes/Enemy.tscn" id="4_wc2qw"]
+[ext_resource type="PackedScene" uid="uid://cdimjvdj1ku61" path="res://niveis/marte/scenes/Fruit.tscn" id="5_3u88k"]
+[ext_resource type="Texture2D" uid="uid://dhf8i7kqu4ndj" path="res://niveis/marte/images/backgrounds/game_background_1/layers/sky.png" id="9_fpmib"]
+[ext_resource type="Script" path="res://niveis/marte/scripts/clouds.gd" id="10_a4qbl"]
+[ext_resource type="Texture2D" uid="uid://ve73dtjckh42" path="res://niveis/marte/images/backgrounds/game_background_1/layers/rocks_1.png" id="10_gxwkh"]
+[ext_resource type="AudioStream" uid="uid://ti1xgtl7axnx" path="res://niveis/marte/sfxs/Mars.wav" id="10_trtss"]
+[ext_resource type="Texture2D" uid="uid://d86e07c3qkyv" path="res://niveis/marte/images/backgrounds/game_background_2/layers/rocks_2.png" id="11_0jquu"]
+[ext_resource type="Texture2D" uid="uid://dnsnj5wwuo1s1" path="res://niveis/marte/images/backgrounds/game_background_1/layers/clouds_2.png" id="12_7cvky"]
+[ext_resource type="Texture2D" uid="uid://c238uyfuws3jv" path="res://niveis/marte/images/backgrounds/game_background_1/layers/clouds_1.png" id="13_3am7l"]
+[ext_resource type="Texture2D" uid="uid://c6ykopgclbaww" path="res://niveis/marte/images/fade.png" id="14_2r7tt"]
+[ext_resource type="Script" path="res://niveis/marte/scripts/audio_player.gd" id="16_61xei"]
+[ext_resource type="AudioStream" uid="uid://c38dml4vaher2" path="res://niveis/marte/sfxs/Kaka_Feliz.wav" id="17_ca011"]
+[ext_resource type="AudioStream" uid="uid://byoeu7wb0ghh6" path="res://niveis/marte/sfxs/Kaka_Triste.wav" id="18_6kuqr"]
+[ext_resource type="AudioStream" uid="uid://dv05paqkm0ctb" path="res://niveis/marte/sfxs/Extra/Fruta_Estilizada.wav" id="19_n8oq5"]
+[ext_resource type="AudioStream" uid="uid://dxf1smx1rap82" path="res://niveis/marte/sfxs/Extra/Bomciano_Elaborado.wav" id="20_36uq3"]
+[ext_resource type="AudioStream" uid="uid://x1kt6o41ll23" path="res://niveis/marte/sfxs/Extra/Malciano_Ataca_Realista.wav" id="21_pj4s1"]
+[ext_resource type="AudioStream" uid="uid://bpa4vshswi0ei" path="res://niveis/marte/sfxs/Extra/Spawn_ReSpawn.wav" id="22_2wkt8"]
+[ext_resource type="VideoStream" path="res://niveis/marte/videos/Game-over.ogv" id="23_yqkbr"]
+[ext_resource type="VideoStream" path="res://niveis/marte/videos/Good-ending.ogv" id="24_xljoj"]
+
+[sub_resource type="Environment" id="Environment_8hhkf"]
+background_mode = 1
+background_color = Color(0.812748, 0.642449, 0.403129, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.960784, 0, 0.737255, 1)
+ambient_light_energy = 0.2
+reflected_light_source = 1
+fog_light_energy = 9.34
+fog_sun_scatter = 0.13
+fog_density = 0.0141
+volumetric_fog_emission_energy = 58.68
+volumetric_fog_gi_inject = 1.36
+volumetric_fog_anisotropy = 0.9
+volumetric_fog_length = 66.8
+volumetric_fog_detail_spread = 0.615572
+volumetric_fog_ambient_inject = 5.42
+volumetric_fog_sky_affect = 0.203
+adjustment_enabled = true
+adjustment_saturation = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_krfgg"]
+exposure_multiplier = 1.2
+auto_exposure_scale = 1.2
+auto_exposure_speed = 20.58
+dof_blur_far_enabled = true
+dof_blur_far_distance = 108.0
+dof_blur_near_distance = 50.0
+dof_blur_amount = 0.05
+
+[node name="Mars" type="Node3D"]
+script = ExtResource("3_qrwog")
+tileScene = ExtResource("3_cwfvk")
+tileWidth = 0.75
+tileHeight = 0.1
+enemy = ExtResource("4_wc2qw")
+enemyRate = 2
+fruit = ExtResource("5_3u88k")
+fruitRate = 1
+friend = ExtResource("4_emv6s")
+
+[node name="CameraPivot" type="Marker3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(0.173648, -0.492404, 0.852868, 0, 0.866026, 0.5, -0.984808, -0.0868241, 0.150384, 0.0665337, -0.132892, 0.0665337)
+script = ExtResource("3_7qwd1")
+player = NodePath("../Player")
+yOffset = 1.0
+lerp = 0.05
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+projection = 1
+current = true
+size = 10.0
+
+[node name="Background" type="Node3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="Layer0" type="Sprite3D" parent="CameraPivot/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -8.9407e-08, 1, 0, 0, -10)
+modulate = Color(1, 0.387438, 0.469968, 0.207843)
+texture = ExtResource("9_fpmib")
+
+[node name="Layer1" type="Sprite3D" parent="CameraPivot/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.38419e-07, 1, 0, 0, -9)
+modulate = Color(1, 0.423529, 0.0627451, 0.25098)
+texture = ExtResource("10_gxwkh")
+
+[node name="Layer2" type="Sprite3D" parent="CameraPivot/Background"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, -5.06639e-07, 1, 0, 0, -8)
+modulate = Color(1, 0.435294, 0.117647, 0.623529)
+texture = ExtResource("11_0jquu")
+
+[node name="Clouds1" type="Node3D" parent="CameraPivot/Background"]
+transform = Transform3D(1, 0, 0, -7.45058e-09, 1, 9.31323e-10, -1.49012e-08, -1.67638e-08, 1, 0, 0, -7)
+
+[node name="Layer3_1" type="Sprite3D" parent="CameraPivot/Background/Clouds1"]
+transform = Transform3D(0.999999, 7.45058e-09, 0, 7.45058e-09, 1, -1.86265e-09, 1.49012e-08, -1.05519e-06, 1, 0, 0, 0)
+modulate = Color(1, 0.533333, 0.317647, 1)
+texture = ExtResource("12_7cvky")
+script = ExtResource("10_a4qbl")
+speed = 0.25
+width = 20.0
+
+[node name="Layer3_2" type="Sprite3D" parent="CameraPivot/Background/Clouds1"]
+transform = Transform3D(0.999998, 2.23517e-08, 1.49012e-08, 7.45058e-09, 1, -3.25963e-08, 2.98023e-08, -2.12342e-06, 1, -20, 0, 0)
+modulate = Color(1, 0.533333, 0.317647, 1)
+texture = ExtResource("12_7cvky")
+script = ExtResource("10_a4qbl")
+speed = 0.25
+width = 20.0
+
+[node name="Clouds2" type="Node3D" parent="CameraPivot/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Layer4_1" type="Sprite3D" parent="CameraPivot/Background/Clouds2"]
+transform = Transform3D(0.999997, 7.45058e-09, 0, 0, 0.999999, 9.31323e-10, 0, -2.13739e-06, 1, 0, 0, 0)
+modulate = Color(1, 0.597054, 0.354859, 1)
+texture = ExtResource("13_3am7l")
+script = ExtResource("10_a4qbl")
+speed = 0.1
+width = 20.0
+
+[node name="Layer4_2" type="Sprite3D" parent="CameraPivot/Background/Clouds2"]
+transform = Transform3D(0.999994, 1.49012e-08, 0, -7.45058e-09, 0.999998, 3.72529e-09, 1.49012e-08, -4.28874e-06, 1, -20, 0, 0)
+modulate = Color(1, 0.597054, 0.354859, 1)
+texture = ExtResource("13_3am7l")
+script = ExtResource("10_a4qbl")
+speed = 0.1
+width = 20.0
+
+[node name="Foreground" type="Node3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+
+[node name="Light0" type="Sprite3D" parent="CameraPivot/Foreground"]
+transform = Transform3D(0.53033, 15.4068, 0, -0.53033, 15.4068, 2.38419e-07, -7.45058e-09, -9.53674e-07, 5, -4.1274, -4.1274, 0)
+modulate = Color(1, 1, 1, 0.129412)
+texture = ExtResource("14_2r7tt")
+
+[node name="Light1" type="Sprite3D" parent="CameraPivot/Foreground"]
+transform = Transform3D(0.229463, 15.4068, 0, -0.229463, 15.4068, 2.38419e-07, 2.6077e-08, -9.53674e-07, 5, -0.0801115, -5.59718, 0)
+modulate = Color(1, 1, 1, 0.129412)
+texture = ExtResource("14_2r7tt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.656059, 0.75471, 0, -0.75471, 0.656059, 0, 4.28162, 5.04517)
+light_color = Color(1, 1, 0.584314, 1)
+light_energy = 1.5
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+
+[node name="Player" parent="." instance=ExtResource("1_b6evm")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_trtss")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8hhkf")
+camera_attributes = SubResource("CameraAttributesPractical_krfgg")
+
+[node name="Audios" type="Node3D" parent="."]
+
+[node name="KakaHappy" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("17_ca011")
+script = ExtResource("16_61xei")
+
+[node name="KakaSad" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("18_6kuqr")
+script = ExtResource("16_61xei")
+
+[node name="Fruit" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("19_n8oq5")
+script = ExtResource("16_61xei")
+
+[node name="Bomciano" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("20_36uq3")
+script = ExtResource("16_61xei")
+
+[node name="Mauciano" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("21_pj4s1")
+volume_db = -5.0
+script = ExtResource("16_61xei")
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("22_2wkt8")
+autoplay = true
+script = ExtResource("16_61xei")
+
+[node name="UI" type="Node3D" parent="."]
+
+[node name="ScoreDisplay" type="HBoxContainer" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 8.0
+offset_top = 574.0
+offset_right = 48.0
+offset_bottom = 614.0
+grow_horizontal = 2
+
+[node name="Videos" type="Node3D" parent="."]
+
+[node name="GameOver" type="VideoStreamPlayer" parent="Videos"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource("23_yqkbr")
+expand = true
+loop = true
+
+[node name="GoodEnding" type="VideoStreamPlayer" parent="Videos"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource("24_xljoj")
+expand = true
+loop = true

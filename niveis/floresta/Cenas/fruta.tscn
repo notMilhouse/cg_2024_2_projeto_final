@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl4dpuye8e44a"]
+
+[ext_resource type="Script" path="res://niveis/floresta/Cenas/Códigos/fruta.gd" id="1_30f2f"]
+[ext_resource type="PackedScene" uid="uid://rdxfvpthb61s" path="res://niveis/floresta/textures/Red_Apple_Illustratio_1201211007_texture.fbx" id="2_eld1g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1u8hs"]
+
+[node name="Node3D" type="Node3D" groups=["fruta"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_30f2f")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Red_Apple_Illustratio_1201211007_texture" parent="Pivot" instance=ExtResource("2_eld1g")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_1u8hs")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

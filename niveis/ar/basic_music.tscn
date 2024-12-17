@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnwgxx1p1iv4f"]
+
+[ext_resource type="AudioStream" uid="uid://bpsefq4vvlu7p" path="res://niveis/ar/Intro Theme.mp3" id="1_06udh"]
+
+[node name="BasicMusic" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_06udh")
+volume_db = 3.693
+autoplay = true

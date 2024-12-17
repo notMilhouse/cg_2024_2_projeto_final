@@ -1,0 +1,1051 @@
+[gd_scene load_steps=56 format=3 uid="uid://c071jggk51jnw"]
+
+[ext_resource type="Script" path="res://niveis/ar/teste.gd" id="1_rspg7"]
+[ext_resource type="PackedScene" uid="uid://cb6wqwr54iwmc" path="res://niveis/ar/mob.tscn" id="2_aoud6"]
+[ext_resource type="PackedScene" uid="uid://dl5rq6fvdcsrf" path="res://niveis/ar/player.tscn" id="3_jwndl"]
+[ext_resource type="PackedScene" uid="uid://bohtgowrtd0bc" path="res://niveis/ar/nuven4,2.glb" id="4_3mupe"]
+[ext_resource type="Script" path="res://niveis/ar/PathFollow3D.gd" id="5_gq0hv"]
+[ext_resource type="FontFile" uid="uid://cal0nc2xh2ekf" path="res://niveis/ar/ARCADES.TTF" id="6_2omvu"]
+[ext_resource type="Script" path="res://niveis/ar/score.gd" id="6_heg4e"]
+[ext_resource type="Script" path="res://niveis/ar/aguia_point.gd" id="7_em0tc"]
+[ext_resource type="PackedScene" uid="uid://bbsu4jkonw2a7" path="res://niveis/ar/aguia.tscn" id="7_sjcj8"]
+[ext_resource type="Script" path="res://niveis/ar/Vidas.gd" id="8_j7ejr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqvhi"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tajmm"]
+albedo_color = Color(1, 1, 1, 0.670588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_74ao0"]
+material = SubResource("StandardMaterial3D_tajmm")
+size = Vector3(80, 0.1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhrdo"]
+margin = 0.225
+size = Vector3(80, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ctde5"]
+size = Vector3(80, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yl0og"]
+size = Vector3(35, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fiae"]
+size = Vector3(32, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw06o"]
+size = Vector3(22.183, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvxam"]
+size = Vector3(35, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8r4oe"]
+size = Vector3(26, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lip7t"]
+size = Vector3(16.899, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn2dr"]
+size = Vector3(12, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2tsy"]
+size = Vector3(13, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x323b"]
+size = Vector3(20, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjxal"]
+size = Vector3(15, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhmg3"]
+size = Vector3(9, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8doqn"]
+size = Vector3(30, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_313pa"]
+size = Vector3(20, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1np5"]
+size = Vector3(15, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4rvv"]
+size = Vector3(20, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fwm1"]
+size = Vector3(10.063, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo2ob"]
+size = Vector3(73, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_up5ct"]
+size = Vector3(1, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4pty"]
+size = Vector3(48, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lywjf"]
+size = Vector3(34, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iudeo"]
+size = Vector3(38, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n654f"]
+size = Vector3(15, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvlun"]
+size = Vector3(27, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3j40"]
+size = Vector3(28, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ru47r"]
+size = Vector3(24.208, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6iq03"]
+size = Vector3(8.743, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8gny"]
+size = Vector3(15, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0atj8"]
+size = Vector3(25, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beybg"]
+size = Vector3(20, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dx4sh"]
+size = Vector3(5, 6, 2)
+
+[sub_resource type="Curve3D" id="Curve3D_y357t"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.48425, 0, -30.7205, 0, 0, 0, 0, 0, 0, -5.88932, 0, -30.7205, 0, 0, 0, 0, 0, 0, -31.1389, 0, -30.788, 0, 0, 0, 0, 0, 0, -31.2739, 0, -37.2016, 0, 0, 0, 0, 0, 0, -30.6867, 0, -37.1988, 0, 0, 0, 0, 0, 0, 25.2338, 0, -36.9316, 0, 0, 0, 0, 0, 0, 25.2239, 0, -35.9754, 0, 0, 0, 0, 0, 0, -32.136, 0, -36.149, 0, 0, 0, 0, 0, 0, -32.136, 0, -30.8819, 0, 0, 0, 0, 0, 0, -4.87412, 0, -31.2291, 0, 0, 0, 0, 0, 0, -5.48425, 0, -30.7205),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_ra2tu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.0632, 0, -12.1214, 0, 0, 0, 0, 0, 0, 36.0798, 0, -11.9535, 0, 0, 0, 0, 0, 0, 35.9248, -0.00012207, -36.2416, 0, 0, 0, 0, 0, 0, 29.338, -0.00012207, -36.3037, 0, 0, 0, 0, 0, 0, 29.0632, 0, -12.1214),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_b4byn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -25.8114, 0.110107, -25.371, 0, 0, 0, 0, 0, 0, 12.3784, 0.108276, -24.8106, 0, 0, 0, 0, 0, 0, 12.3506, 0.0803223, -18.4323, 0, 0, 0, 0, 0, 0, -31.5901, 0.0794678, -18.4665, 0, 0, 0, 0, 0, 0, -32.012, 0.0511475, -12.0112, 0, 0, 0, 0, 0, 0, 19.7245, 0.0517578, -11.943, 0, 0, 0, 0, 0, 0, 19.8214, 0.0698242, -16.1161, 0, 0, 0, 0, 0, 0, 23.3646, 0.069458, -16.0219, 0, 0, 0, 0, 0, 0, 22.9148, 0.0921631, -21.2211, 0, 0, 0, 0, 0, 0, 19.6048, 0.0893555, -20.6056, 0, 0, 0, 0, 0, 0, 19.0783, 0.113892, -26.2776, 0, 0, 0, 0, 0, 0, 23.8793, 0.11145, -25.7054, 0, 0, 0, 0, 0, 0, 23.4333, 0.137817, -31.7708, 0, 0, 0, 0, 0, 0, 6.03162, 0.138794, -32.083, 0, 0, 0, 0, 0, 0, 5.92848, 0.114258, -26.4924, 0, 0, 0, 0, 0, 0, -26.6714, 0.114868, -26.7922, 0, 0, 0, 0, 0, 0, -25.8114, 0.110107, -25.371),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+
+[sub_resource type="Curve3D" id="Curve3D_qkiok"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -6.89454, -0.0316162, 7.1833, 0, 0, 0, 0, 0, 0, 6.53878, -0.0332031, 7.57947, 0, 0, 0, 0, 0, 0, 5.79404, 0.0321045, -7.41148, 0, 0, 0, 0, 0, 0, -7.7746, 0.0332031, -7.74073, 0, 0, 0, 0, 0, 0, -6.89454, -0.0316162, 7.1833),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_dsxtm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -6.00408, -0.137085, 31.3667, 0, 0, 0, 0, 0, 0, -5.96198, -0.130015, 29.7444, 0, 0, 0, 0, 0, 0, -5.55567, -0.0617735, 14.0863, 0, 0, 0, 0, 0, 0, -5.51712, -0.0552979, 12.6004, 0, 0, 0, 0, 0, 0, -11.931, -0.0557861, 12.6399, 0, 0, 0, 0, 0, 0, -11.9838, -0.0605466, 13.7297, 0, 0, 0, 0, 0, 0, -12.8213, -0.135986, 30.9994, 0, 0, 0, 0, 0, 0, -19.3705, -0.136719, 31.1058, 0, 0, 0, 0, 0, 0, -19.4221, -0.0534668, 11.9997, 0, 0, 0, 0, 0, 0, -19.3749, -0.141357, 32.1185, 0, 0, 0, 0, 0, 0, -12.2853, -0.140625, 31.9469, 0, 0, 0, 0, 0, 0, -6.00408, -0.137085, 31.3667),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_q5g60"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -12.5117, -0.0113525, 2.51997, 0, 0, 0, 0, 0, 0, -36.6438, -0.0112305, 2.35264, 0, 0, 0, 0, 0, 0, -36.6836, 0.0108643, -2.73461, 0, 0, 0, 0, 0, 0, -12.3646, 0.0112305, -2.75258, 0, 0, 0, 0, 0, 0, -12.5117, -0.0113525, 2.51997),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_345m5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12.3126, 0, 31.2313, 0, 0, 0, 0, 0, 0, 12.4573, 0, -1.47566, 0, 0, 0, 0, 0, 0, 35.1061, 0, -1.62039, 0, 0, 0, 0, 0, 0, 34.9515, 0, 3.10371, 0, 0, 0, 0, 0, 0, 35.2047, 0, 36.8642, 0, 0, 0, 0, 0, 0, 19.3372, 0, 36.7798, 0, 0, 0, 0, 0, 0, 19.5828, 0, 16.6922, 0, 0, 0, 0, 0, 0, 19.7592, 0, 2.2597, 0, 0, 0, 0, 0, 0, 26.9333, 0, 1.92209, 0, 0, 0, 0, 0, 0, 27.0163, 0, 16.7767, 0, 0, 0, 0, 0, 0, 27.1021, 0, 32.1378, 0, 0, 0, 0, 0, 0, 25.8325, 0, 32.0644, 0, 0, 0, 0, 0, 0, 25.4707, 0, 16.5069, 0, 0, 0, 0, 0, 0, 20.5502, 0, 16.6516, 0, 0, 0, 0, 0, 0, 20.1884, 0, 35.6825, 0, 0, 0, 0, 0, 0, 34.154, 0, 35.8272, 0, 0, 0, 0, 0, 0, 33.6767, 0, -2.7302, 0, 0, 0, 0, 0, 0, 12.404, 0, -2.63693, 0, 0, 0, 0, 0, 0, 11.3441, 0, 32.5529, 0, 0, 0, 0, 0, 0, 12.3126, 0, 31.2313),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 20
+
+[sub_resource type="Theme" id="Theme_ll7ac"]
+
+[sub_resource type="FontVariation" id="FontVariation_yvh6d"]
+base_font = ExtResource("6_2omvu")
+
+[sub_resource type="Curve3D" id="Curve3D_2vilq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.43695, 1.33313, 0.986851, 0, 0, 0, 0, 0, 0, -2.32277, -1.3075, -0.783321, 0, 0, 0, 0, 0, 0, 1.70701, -1.23132, -0.889843, 0, 0, 0, 0, 0, 0, 1.62202, 1.3584, 0.845308, 0, 0, 0, 0, 0, 0, -2.43695, 1.33313, 0.986851),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_rspg7")
+mob_scene = ExtResource("2_aoud6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="GRoundCollision" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_rqvhi")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_74ao0")
+
+[node name="Player" parent="." instance=ExtResource("3_jwndl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.274841, 0, -0.586475)
+
+[node name="camerapivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.274841, 0, 0.586475)
+
+[node name="Camera3D" type="Camera3D" parent="Player/camerapivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+projection = 1
+size = 30.0
+near = 0.006
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/camerapivot"]
+transform = Transform3D(-1, -2.78142e-07, -1.13687e-13, 2.48732e-07, -0.894264, 0.44754, -1.2448e-07, 0.44754, 0.894264, 0, 6.28591, 6.28591)
+
+[node name="Mapa" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.394, 0.5, 37.934)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53913, 0, 1.18788)
+shape = SubResource("BoxShape3D_fhrdo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53913, 0, -76.3362)
+shape = SubResource("BoxShape3D_fhrdo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.8632, 0, -37.5716)
+shape = SubResource("BoxShape3D_ctde5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.55, 0, -37.5716)
+shape = SubResource("BoxShape3D_ctde5")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.573, 0, -16.9119)
+shape = SubResource("BoxShape3D_yl0og")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.9279, 0, -20.3632)
+shape = SubResource("BoxShape3D_yl0og")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.1496, 0, -18.9827)
+shape = SubResource("BoxShape3D_7fiae")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.226, 0, -18.6869)
+shape = SubResource("BoxShape3D_7fiae")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.24561, 0, -13.6993)
+shape = SubResource("BoxShape3D_yw06o")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.0233, 0, -20.4371)
+shape = SubResource("BoxShape3D_cvxam")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.579478, 0, -15.8388)
+shape = SubResource("BoxShape3D_8r4oe")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.80496, 0, -15.8388)
+shape = SubResource("BoxShape3D_8r4oe")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.3034, 0, -10.9675)
+shape = SubResource("BoxShape3D_lip7t")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.3034, 0, -28.7249)
+shape = SubResource("BoxShape3D_fn2dr")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.984, 0, -15.4521)
+shape = SubResource("BoxShape3D_h2tsy")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.5072, 0, -18.9311)
+shape = SubResource("BoxShape3D_x323b")
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.7404, 0, -18.9311)
+shape = SubResource("BoxShape3D_x323b")
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.4253, 0, -35.9902)
+shape = SubResource("BoxShape3D_bjxal")
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.7758, 0, -35.9902)
+shape = SubResource("BoxShape3D_bjxal")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.810418, 0, -38.3515)
+shape = SubResource("BoxShape3D_uhmg3")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.01915, 0, -38.8487)
+shape = SubResource("BoxShape3D_uhmg3")
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3082, 0, -42.8256)
+shape = SubResource("BoxShape3D_8doqn")
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8906, 0, -42.1008)
+shape = SubResource("BoxShape3D_8doqn")
+
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1281, 0, -37.9583)
+shape = SubResource("BoxShape3D_313pa")
+
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9607, 0, -37.6202)
+shape = SubResource("BoxShape3D_u1np5")
+
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3383, 0, -33.5622)
+shape = SubResource("BoxShape3D_u1np5")
+
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8455, 0, -3.80413)
+shape = SubResource("BoxShape3D_u1np5")
+
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01159, 0, -3.80413)
+shape = SubResource("BoxShape3D_u1np5")
+
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3703, 0, -28.1621)
+shape = SubResource("BoxShape3D_c4rvv")
+
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05709, 0, -3.72389)
+shape = SubResource("BoxShape3D_8fwm1")
+
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19195, 0, -28.14)
+shape = SubResource("BoxShape3D_8fwm1")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.294, 0, -3.38951)
+shape = SubResource("BoxShape3D_8fwm1")
+
+[node name="CollisionShape3D33" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00585, 0, -34.3522)
+shape = SubResource("BoxShape3D_8fwm1")
+
+[node name="CollisionShape3D34" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74536, 0, -47.4462)
+shape = SubResource("BoxShape3D_xo2ob")
+
+[node name="CollisionShape3D35" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74536, 0, -47.4462)
+shape = SubResource("BoxShape3D_up5ct")
+
+[node name="CollisionShape3D36" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0606, 0, -53.5195)
+shape = SubResource("BoxShape3D_d4pty")
+
+[node name="CollisionShape3D37" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1489, 0, -59.6078)
+shape = SubResource("BoxShape3D_lywjf")
+
+[node name="CollisionShape3D38" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9509, 0, -66.381)
+shape = SubResource("BoxShape3D_iudeo")
+
+[node name="CollisionShape3D39" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5596, 0, -66.381)
+shape = SubResource("BoxShape3D_n654f")
+
+[node name="CollisionShape3D40" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.509, 0, -71.4143)
+shape = SubResource("BoxShape3D_yvlun")
+
+[node name="CollisionShape3D41" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8151, 0, -71.4143)
+shape = SubResource("BoxShape3D_a3j40")
+
+[node name="CollisionShape3D42" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.3552, 0, -64.7396)
+shape = SubResource("BoxShape3D_ru47r")
+
+[node name="CollisionShape3D43" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.5606, 0, -62.8683)
+shape = SubResource("BoxShape3D_6iq03")
+
+[node name="CollisionShape3D44" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.9457, 0, -59.8538)
+shape = SubResource("BoxShape3D_p8gny")
+
+[node name="CollisionShape3D45" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.513, 0, -59.5639)
+shape = SubResource("BoxShape3D_0atj8")
+
+[node name="CollisionShape3D46" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.5229, 0, -61.9873)
+shape = SubResource("BoxShape3D_beybg")
+
+[node name="CollisionShape3D47" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.58779, 0, -68.9298)
+shape = SubResource("BoxShape3D_dx4sh")
+
+[node name="CollisionShape3D48" type="CollisionShape3D" parent="Mapa/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.6864, 0, -62.9644)
+shape = SubResource("BoxShape3D_dx4sh")
+
+[node name="nuvens" type="Node3D" parent="Mapa"]
+
+[node name="nuven4,2" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.394, 0.5, 37.934)
+
+[node name="nuven4,3" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.782, 0.5, 37.846)
+
+[node name="nuven4,4" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.223, 0.5, 37.846)
+
+[node name="nuven4,5" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.047, 0.5, 37.785)
+
+[node name="nuven4,6" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3023, 0.5, 37.934)
+
+[node name="nuven4,7" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3068, 0.5, 37.934)
+
+[node name="nuven4,8" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1624, 0.5, 37.934)
+
+[node name="nuven4,55" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.47673, 0.5, -34.4134)
+
+[node name="nuven4,56" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -17.5783, 0.5, -34.5014)
+
+[node name="nuven4,57" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -11.9047, 0.5, -34.5014)
+
+[node name="nuven4,58" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.928077, 0.5, -34.3493)
+
+[node name="nuven4,62" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.56127, 0.5, -29.172)
+
+[node name="nuven4,63" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -17.6628, 0.5, -29.26)
+
+[node name="nuven4,64" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -11.9892, 0.5, -29.26)
+
+[node name="nuven4,65" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.84354, 0.5, -29.1079)
+
+[node name="nuven4,59" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 13.5315, 0.5, -34.341)
+
+[node name="nuven4,60" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 21.6946, 0.5, -34.4134)
+
+[node name="nuven4,61" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 30.1595, 0.5, -34.4134)
+
+[node name="nuven4,9" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35653, 1, -40.4051)
+
+[node name="nuven4,10" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8195, 1, -40.4931)
+
+[node name="nuven4,11" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26048, 1, -40.4931)
+
+[node name="nuven4,12" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0095, 1, -40.5541)
+
+[node name="nuven4,13" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2649, 1, -40.4051)
+
+[node name="nuven4,14" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2694, 1, -40.4051)
+
+[node name="nuven4,15" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.125, 1, -40.4051)
+
+[node name="nuven4,16" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.2402, 0.5, 22.0788)
+
+[node name="nuven4,17" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.4075, 0.5, -2.52516)
+
+[node name="nuven4,18" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.4446, 0.5, 9.98642)
+
+[node name="nuven4,19" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.606, 0.5, -14.2573)
+
+[node name="nuven4,20" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.6906, 0.5, -26.1818)
+
+[node name="nuven4,21" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.7597, 0.5, -38.739)
+
+[node name="nuven4,22" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.505, 1, -45.3152)
+
+[node name="nuven4,23" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.6045, 1, 21.6224)
+
+[node name="nuven4,24" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.6395, 1, -3.76184)
+
+[node name="nuven4,25" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.5579, 1, 8.86852)
+
+[node name="nuven4,26" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.6995, 1, -16.5216)
+
+[node name="nuven4,27" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.7093, 1, -27.7526)
+
+[node name="nuven4,28" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.7453, 1, -36.7029)
+
+[node name="nuven4,29" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.7939, 1, -45.3368)
+
+[node name="nuven4,30" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 7.38006, 0.5, 2.95174)
+
+[node name="nuven4,31" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.64384e-07, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.64384e-07, -3.79864, 0.5, 7.32108)
+
+[node name="nuven4,32" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 2.42121, 0.5, -8.6341)
+
+[node name="nuven4,33" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 13.669, 0.5, -10.3618)
+
+[node name="nuven4,34" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 9.04479, 0.5, -10.3536)
+
+[node name="nuven4,35" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.50019, 0.85, -10.3233)
+
+[node name="nuven4,36" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -10.9147, 0.5, -2.76657)
+
+[node name="nuven4,37" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.97919, 0.5, 9.15783)
+
+[node name="nuven4,38" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 13.6605, 0.5, 9.21997)
+
+[node name="nuven4,39" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 8.19241, 0.5, -2.61936)
+
+[node name="nuven4,40" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 8.19241, 0.5, -8.53272)
+
+[node name="nuven4,41" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -10.986, 0.5, -9.01218)
+
+[node name="nuven4,98" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.34866, 0.5, 12.123)
+
+[node name="nuven4,99" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.42, 0.5, 5.87736)
+
+[node name="nuven4,100" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.34866, 0.5, 22.5599)
+
+[node name="nuven4,106" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -28.7886, 0.5, 21.4727)
+
+[node name="nuven4,101" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.42, 0.5, 16.3143)
+
+[node name="nuven4,132" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0.962836, 0.5, 12.123)
+
+[node name="nuven4,133" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0.891492, 0.5, 5.87736)
+
+[node name="nuven4,134" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0.962836, 0.5, 22.5599)
+
+[node name="nuven4,135" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0.891492, 0.5, 16.3143)
+
+[node name="nuven4,158" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 29.7561, 0.5, 11.4394)
+
+[node name="nuven4,159" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 29.6847, 0.5, 5.19383)
+
+[node name="nuven4,162" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 29.6847, 0.5, 0.0984321)
+
+[node name="nuven4,160" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 29.7561, 0.5, 21.8763)
+
+[node name="nuven4,161" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 29.6847, 0.5, 15.6307)
+
+[node name="nuven4,137" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.5599, 0.5, 12.123)
+
+[node name="nuven4,140" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.4886, 0.5, 5.87736)
+
+[node name="nuven4,153" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.4161, 0.5, -2.60266)
+
+[node name="nuven4,141" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.5599, 0.5, 22.5599)
+
+[node name="nuven4,142" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.4886, 0.5, 16.3143)
+
+[node name="nuven4,155" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 7.83517, 0.5, 15.1063)
+
+[node name="nuven4,156" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 7.76383, 0.5, 9.5993)
+
+[node name="nuven4,157" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 7.76383, 0.5, 21.7183)
+
+[node name="nuven4,143" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.8158, 0.5, 18.4093)
+
+[node name="nuven4,144" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.7445, 0.5, 17.7042)
+
+[node name="nuven4,145" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.8158, 0.5, 22.5599)
+
+[node name="nuven4,146" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.7445, 0.5, 16.3143)
+
+[node name="nuven4,147" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.8158, 0.5, 2.55814)
+
+[node name="nuven4,148" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.7445, 0.5, -0.269162)
+
+[node name="nuven4,149" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.8158, 0.5, 15.0727)
+
+[node name="nuven4,150" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 21.7445, 0.5, 1.42202)
+
+[node name="nuven4,116" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -28.7891, 0.5, 6.3052)
+
+[node name="nuven4,117" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -28.8604, 0.5, 0.0595837)
+
+[node name="nuven4,118" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -28.7891, 0.5, 16.7421)
+
+[node name="nuven4,119" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -28.8604, 0.5, 10.4965)
+
+[node name="nuven4,122" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0071, 0.5, 21.4727)
+
+[node name="nuven4,131" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0071, 0.5, 25.7489)
+
+[node name="nuven4,123" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0075, 0.5, 6.3052)
+
+[node name="nuven4,124" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0789, 0.5, 0.0595837)
+
+[node name="nuven4,125" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0075, 0.5, 16.7421)
+
+[node name="nuven4,126" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.0789, 0.5, 10.4965)
+
+[node name="nuven4,103" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -23.2078, 0.5, 12.123)
+
+[node name="nuven4,107" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -23.2791, 0.5, 5.87736)
+
+[node name="nuven4,108" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -23.2791, 0.5, 16.3143)
+
+[node name="nuven4,109" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16.9021, 0.5, 12.123)
+
+[node name="nuven4,110" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16.9735, 0.5, 5.87736)
+
+[node name="nuven4,111" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16.9735, 0.5, 16.3143)
+
+[node name="nuven4,112" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -10.4516, 0.5, 12.123)
+
+[node name="nuven4,113" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -10.5229, 0.5, 16.3143)
+
+[node name="nuven4,42" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 22.3033, 0.5, -10.3152)
+
+[node name="nuven4,43" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 30.9402, 0.5, -10.3152)
+
+[node name="nuven4,44" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 37.6188, 0.5, -10.3998)
+
+[node name="nuven4,45" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.59482, 0.5, -10.3998)
+
+[node name="nuven4,46" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -15.1332, 0.5, -10.3998)
+
+[node name="nuven4,47" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -20.7127, 0.5, -10.3998)
+
+[node name="nuven4,48" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -26.7995, 0.5, -10.4843)
+
+[node name="nuven4,90" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.59482, 0.5, -5.55294)
+
+[node name="nuven4,91" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -15.1332, 0.5, -5.55294)
+
+[node name="nuven4,92" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -20.7127, 0.5, -5.55294)
+
+[node name="nuven4,93" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -26.7995, 0.5, -5.63748)
+
+[node name="nuven4,102" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.30534, 0.5, 33.2955)
+
+[node name="nuven4,104" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -10.7107, 0.5, 33.2955)
+
+[node name="nuven4,105" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -15.9277, 0.5, 33.211)
+
+[node name="nuven4,114" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -5.39503, 0.5, 9.17287)
+
+[node name="nuven4,115" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -10.6121, 0.5, 9.08833)
+
+[node name="nuven4,120" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -10.243, 0.5, 3.68566)
+
+[node name="nuven4,121" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -15.46, 0.5, 3.60112)
+
+[node name="nuven4,127" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -10.243, 0.5, -0.735537)
+
+[node name="nuven4,128" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -15.46, 0.5, -0.820075)
+
+[node name="nuven4,129" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -16.0412, 0.5, -0.735537)
+
+[node name="nuven4,130" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -21.2583, 0.5, -0.820075)
+
+[node name="nuven4,94" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 41.9305, 0.5, -4.96117)
+
+[node name="nuven4,95" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 33.3921, 0.5, -4.96117)
+
+[node name="nuven4,96" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 27.8126, 0.5, -4.96117)
+
+[node name="nuven4,97" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 21.7258, 0.5, -5.04571)
+
+[node name="nuven4,136" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 35.0887, 0.5, 33.6749)
+
+[node name="nuven4,138" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 20.9708, 0.5, 33.6749)
+
+[node name="nuven4,139" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 14.884, 0.5, 33.5904)
+
+[node name="nuven4,152" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 34.5983, 0.5, -0.329746)
+
+[node name="nuven4,154" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 28.0752, 0.5, -0.329746)
+
+[node name="nuven4,49" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 31.9837, 0.5, -26.6725)
+
+[node name="nuven4,50" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 31.9449, 0.5, -35.1805)
+
+[node name="nuven4,51" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 31.8058, 0.5, -37.9361)
+
+[node name="nuven4,73" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.4986, 0.5, -27.5749)
+
+[node name="nuven4,76" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 15.4599, 0.5, -31.7144)
+
+[node name="nuven4,66" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -3.95396, 0.5, -36.6314)
+
+[node name="nuven4,87" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -29.8287, 0.5, -30.9056)
+
+[node name="nuven4,52" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 25.0077, 0.5, -22.9162)
+
+[node name="nuven4,53" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 24.969, 0.5, -31.4243)
+
+[node name="nuven4,54" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 25.0598, 0.5, -37.6223)
+
+[node name="nuven4,68" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.7626, 0.5, -27.4824)
+
+[node name="nuven4,69" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.8013, 0.5, -35.9904)
+
+[node name="nuven4,70" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -34.7105, 0.5, -42.1884)
+
+[node name="nuven4,67" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -21.6097, 0.5, -29.2283)
+
+[node name="nuven4,71" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 21.8533, 0.5, -29.172)
+
+[node name="nuven4,72" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 7.75181, 0.5, -29.26)
+
+[node name="nuven4,74" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 26.2581, 0.5, -29.1079)
+
+[node name="nuven4,75" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.80494, 0.5, -29.2283)
+
+[node name="nuven4,77" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.70623, 0.5, -16.2709)
+
+[node name="nuven4,78" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -17.8078, 0.5, -16.3589)
+
+[node name="nuven4,79" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -12.1342, 0.5, -16.3589)
+
+[node name="nuven4,81" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 7.60685, 0.5, -16.3589)
+
+[node name="nuven4,88" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 15.4914, 0.5, -16.3589)
+
+[node name="nuven4,89" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 20.4458, 0.5, -16.3589)
+
+[node name="nuven4,82" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.80494, 0.5, -16.3271)
+
+[node name="nuven4,80" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.70623, 0.5, -22.3974)
+
+[node name="nuven4,83" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -17.214, 0.5, -22.4854)
+
+[node name="nuven4,84" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -12.1342, 0.5, -22.4854)
+
+[node name="nuven4,85" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 7.60685, 0.5, -22.4854)
+
+[node name="nuven4,86" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.80494, 0.5, -22.4536)
+
+[node name="nuven4,151" parent="Mapa/nuvens" instance=ExtResource("4_3mupe")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -3.95396, 0.5, -36.6314)
+
+[node name="birds" type="Node" parent="."]
+
+[node name="Path3D2" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_y357t")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D2"]
+transform = Transform3D(0.00267333, 0, 0.999994, 0, 1, 0, -0.999994, 0, 0.00267333, -7.56423, 0, -30.725)
+progress = 2.08031
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D2/PathFollow3D" instance=ExtResource("2_aoud6")]
+script = null
+
+[node name="Path3D" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_ra2tu")
+
+[node name="pathbird_1" type="PathFollow3D" parent="birds/Path3D"]
+transform = Transform3D(0.999977, -3.20728e-08, 0.00638153, 0, 1.00001, 5.0258e-06, -0.00638153, -5.02576e-06, 0.999977, 36.0561, -1.86999e-05, -15.6742)
+progress = 10.7395
+rotation_mode = 4
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D/pathbird_1" instance=ExtResource("2_aoud6")]
+
+[node name="Path3D3" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_b4byn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D3"]
+transform = Transform3D(-0.0146725, 4.79343e-05, -0.999892, 1.81899e-12, 1, 4.79394e-05, 0.999892, 7.0339e-07, -0.0146725, -25.8114, 0.110107, -25.371)
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D3/PathFollow3D" instance=ExtResource("2_aoud6")]
+
+[node name="Path3D4" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_qkiok")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D4"]
+transform = Transform3D(-0.0294787, 0.000118029, -0.999565, 0, 1, 0.00011808, 0.999565, 3.48086e-06, -0.0294787, -6.89454, -0.0316162, 7.1833)
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D4/PathFollow3D" instance=ExtResource("2_aoud6")]
+
+[node name="Path3D5" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_dsxtm")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D5"]
+transform = Transform3D(0.999663, -0.000113017, -0.0259418, -3.63798e-12, 0.999991, -0.00435651, 0.025942, 0.00435504, 0.999654, -6.00408, -0.137085, 31.3667)
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D5/PathFollow3D" instance=ExtResource("2_aoud6")]
+
+[node name="Path3D6" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_q5g60")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D6"]
+transform = Transform3D(0.00693371, 5.05524e-06, 0.999976, -2.27374e-13, 1, -5.05537e-06, -0.999976, 3.50522e-08, 0.00693371, -12.5117, -0.0113525, 2.51997)
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D6/PathFollow3D" instance=ExtResource("2_aoud6")]
+
+[node name="Path3D7" type="Path3D" parent="birds"]
+curve = SubResource("Curve3D_345m5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="birds/Path3D7"]
+transform = Transform3D(0.99999, 0, -0.00442409, 0, 1, 0, 0.00442409, 0, 0.99999, 12.3126, 0, 31.2313)
+script = ExtResource("5_gq0hv")
+
+[node name="mob" parent="birds/Path3D7/PathFollow3D" instance=ExtResource("2_aoud6")]
+
+[node name="Ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ll7ac")
+
+[node name="score" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 69.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_2omvu")
+text = "score: 0 "
+script = ExtResource("6_heg4e")
+
+[node name="Retry" type="ColorRect" parent="Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.376471)
+
+[node name="Label" type="Label" parent="Ui/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -11.5
+offset_right = 135.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_2omvu")
+text = "aperte enter para tentar outra vez "
+
+[node name="aguia" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 122.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yvh6d")
+text = "faltam 3 águias"
+script = ExtResource("7_em0tc")
+
+[node name="Vidas" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 60.0
+offset_right = 61.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_2omvu")
+text = "vidas: 3"
+script = ExtResource("8_j7ejr")
+
+[node name="eagle" type="Node" parent="."]
+
+[node name="aguia2" parent="eagle" instance=ExtResource("7_sjcj8")]
+transform = Transform3D(1.275, 0, 0, 0, 0.976707, 0.819554, 0, -0.819554, 0.976707, -36.3642, 0, 33.8745)
+
+[node name="Path3D" type="Path3D" parent="eagle"]
+transform = Transform3D(0.99996, 0, 0.00891851, 0, 1, 0, -0.00891851, 0, 0.99996, 5.57972, 0, 30.0059)
+curve = SubResource("Curve3D_2vilq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="eagle/Path3D"]
+transform = Transform3D(-0.0113673, -0.0335261, 0.999373, -0.875901, 0.482449, 0.00622186, -0.482355, -0.875283, -0.0348497, 0.740935, 1.35291, 0.876033)
+progress = 11.2142
+
+[node name="aguia" parent="eagle/Path3D/PathFollow3D" instance=ExtResource("7_sjcj8")]
+transform = Transform3D(-0.0164363, -0.387054, -1.13046, 0.09657, 1.12644, -0.387081, 1.19098, -0.0966785, 0.0157852, 1.60959, 0.132404, -0.289135)
+
+[connection signal="damage" from="Player" to="Ui/Vidas" method="_on_player_damage"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="kill_aguia" from="Player" to="Ui/aguia" method="_on_player_kill_aguia"]
+[connection signal="point" from="Player" to="Ui/score" method="_on_player_point"]

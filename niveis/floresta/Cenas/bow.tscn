@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cefyy3y6oxp64"]
+
+[ext_resource type="Script" path="res://niveis/floresta/Cenas/Códigos/arco.gd" id="1_snhjx"]
+[ext_resource type="PackedScene" uid="uid://cb0mr67uv8jar" path="res://niveis/floresta/Cenas/arrow.tscn" id="2_rld24"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(-0.00113122, -0.00132918, -0.999998, -0.761538, 0.64812, 0, 0.648119, 0.761537, -0.00174539, 0, -0.1, -0.2)
+script = ExtResource("1_snhjx")
+flecha = ExtResource("2_rld24")
+
+[node name="Ponta" type="Marker3D" parent="."]
+transform = Transform3D(0.579941, -0.493568, 0.64812, -0.493568, 0.42006, 0.761539, -0.64812, -0.761539, 1.47033e-07, -0.151577, 1.51911, -0.00184773)
+
+[node name="Fire_Rate" type="Timer" parent="."]
+wait_time = 0.9
+
+[connection signal="timeout" from="Fire_Rate" to="." method="_on_fire_rate_timeout"]

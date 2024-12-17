@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbsu4jkonw2a7"]
+
+[ext_resource type="Script" path="res://niveis/ar/aguia.gd" id="1_mssef"]
+[ext_resource type="PackedScene" uid="uid://nl6ladf8u4fm" path="res://niveis/ar/aguia_final.glb" id="2_mjgjp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blbn7"]
+size = Vector3(2.05, 2.255, 1.775)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqcoe"]
+size = Vector3(1.44794, 1, 1.13501)
+
+[node name="aguia" type="CharacterBody3D" groups=["aguia"]]
+collision_layer = 2
+script = ExtResource("1_mssef")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="aguia_final" parent="Pivot" instance=ExtResource("2_mjgjp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, 0)
+shape = SubResource("BoxShape3D_blbn7")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+aabb = AABB(-1.43784, -1, -1.54164, 2.87568, 2, 3.08328)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2.86, 0, 0, 0, 2.86, 0, 0, 0, 2.86, 0.125247, 1.09198, -0.193064)
+shape = SubResource("BoxShape3D_xqcoe")
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

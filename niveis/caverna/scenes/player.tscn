@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://mm40ovo70sop"]
+
+[ext_resource type="Script" path="res://niveis/caverna/scripts/character_body_3dKaka.gd" id="1_orgls"]
+[ext_resource type="PackedScene" uid="uid://cj20y56y6impu" path="res://niveis/caverna/assets/trabalhoWithAnim.glb" id="2_dh5av"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6pmcb"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(0.688924, 0, 0, 0, 0.688924, 0, 0, 0, 0.688924, 0, 0, 0)
+script = ExtResource("1_orgls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-9.17939e-08, -2.1, 0, 2.1, -9.17939e-08, 0, 0, 0, 2.1, 0.105609, 1.13518, 0)
+shape = SubResource("CapsuleShape3D_6pmcb")
+
+[node name="trabalhoWithAnim" parent="." instance=ExtResource("2_dh5av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0608159, 0.908245, 0)
+
+[node name="TwistPivot" type="Node3D" parent="."]
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
+transform = Transform3D(-4.49605e-08, -0.694975, 1.27435, -3.08711e-08, 1.27435, 0.694975, -1.45154, -5.5763e-09, -5.42529e-08, 4.31294, 3.1126, 0.0118181)

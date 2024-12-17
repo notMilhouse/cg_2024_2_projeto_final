@@ -1,0 +1,293 @@
+[gd_scene load_steps=22 format=3 uid="uid://d3icya6p4g4ha"]
+
+[ext_resource type="Script" path="res://niveis/agua/main_agua.gd" id="1_b2i4x"]
+[ext_resource type="PackedScene" uid="uid://b3dqtg4ixmken" path="res://niveis/agua/scenes/player_agua.tscn" id="2_ddbmj"]
+[ext_resource type="FontFile" uid="uid://dgucclhx8iryh" path="res://niveis/floresta/fonts/Montserrat-Medium.ttf" id="3_0aqyq"]
+[ext_resource type="Script" path="res://niveis/agua/score_label.gd" id="4_w4l6c"]
+[ext_resource type="Script" path="res://niveis/agua/health_label.gd" id="5_05xj5"]
+[ext_resource type="PackedScene" uid="uid://ylvrweafsayd" path="res://niveis/agua/coraltree.glb" id="6_4nk4x"]
+[ext_resource type="PackedScene" uid="uid://cpk2pntxkx023" path="res://niveis/agua/coralespiral.glb" id="7_wsfn5"]
+[ext_resource type="PackedScene" uid="uid://cn4wiafttjv54" path="res://niveis/agua/coralbolha.glb" id="8_pa3ci"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqnp4"]
+albedo_color = Color(0.065887, 0.391723, 0.7379, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aga7c"]
+material = SubResource("StandardMaterial3D_tqnp4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8yna"]
+size = Vector3(0.067749, 1.16528, 2.01759)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwcb1"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27dfq"]
+albedo_color = Color(0.90086, 0.671742, 0.466427, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1cti"]
+material = SubResource("StandardMaterial3D_27dfq")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Curve3D" id="Curve3D_5q1q7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -17, 0, -13, 0, 0, 0, 0, 0, 0, 17, 0, -13, 0, 0, 0, 0, 0, 0, 17, 0, 14, 0, 0, 0, 0, 0, 0, -17, 0, 14, 0, 0, 0, 0, 0, 0, -17, 0, -13),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldree"]
+albedo_color = Color(0.227451, 0.239216, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8adub"]
+material = SubResource("StandardMaterial3D_ldree")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ccmt"]
+font = ExtResource("3_0aqyq")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qr32r"]
+font = ExtResource("3_0aqyq")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0qyk"]
+font = ExtResource("3_0aqyq")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wafct"]
+font = ExtResource("3_0aqyq")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_b2i4x")
+
+[node name="Parede Esquerda" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.95, 0, 0, 0, 1.6, 0, 0, 0)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede Esquerda"]
+transform = Transform3D(3.93403e-06, -19, 7.86805e-07, 6.35275e-21, -8.30517e-07, -18, 30, 2.49155e-06, -1.67126e-13, 50, 17, 0)
+mesh = SubResource("PlaneMesh_aga7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede Esquerda"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 49.7738, 17.6877, 0.0979614)
+shape = SubResource("BoxShape3D_y8yna")
+
+[node name="Parede Direita" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.002, 0, 0, 0, 1.6, 13, 0, 0)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede Direita"]
+transform = Transform3D(-1.31134e-06, 10, -7.86805e-07, 0, -4.37114e-07, -18, -30, -4.37114e-07, 9.83412e-14, -63, 17, 0)
+mesh = SubResource("PlaneMesh_aga7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede Direita"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -62.745, 17.6877, 0.0979614)
+shape = SubResource("BoxShape3D_y8yna")
+
+[node name="Parede Fundo" type="StaticBody3D" parent="."]
+transform = Transform3D(1.76, 0, 0, 0, 1.95, 0, 0, 0, 1, 0, 0, 25)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede Fundo"]
+transform = Transform3D(30, 5.4186e-07, -4.84461e-14, 1.02024e-13, -4.37114e-07, -18, 9.53674e-07, 10, -7.86805e-07, 0, 17, -70)
+mesh = SubResource("PlaneMesh_aga7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede Fundo"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -0.0706005, 17.6877, -70.3259)
+shape = SubResource("BoxShape3D_y8yna")
+
+[node name="Parede Frente" type="StaticBody3D" parent="."]
+transform = Transform3D(1.7, 0, 0, 0, 1.95, 0, 0, 0, 1, 0, 0, 2)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede Frente"]
+transform = Transform3D(-30, 8.74228e-07, -6.87847e-14, 0, -4.37114e-07, -18, -2.62268e-06, -10, 7.86805e-07, 0, 17, 43)
+mesh = SubResource("PlaneMesh_aga7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede Frente"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -0.0706005, 17.6877, 38.3826)
+shape = SubResource("BoxShape3D_y8yna")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1.7, 0, 0, 0, 1, 0, 0, 0, 1.54, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_gwcb1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_v1cti")
+
+[node name="Player_agua" parent="." instance=ExtResource("2_ddbmj")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, -1, -3.41421, 13.3437)
+size = 20.0
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_5q1q7")
+
+[node name="SpawnPosition" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37113e-08, -17, 0, -13)
+
+[node name="Cylinders" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -13)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -17, 0, 14)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -13)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 14)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="AmigoTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 94.0
+offset_bottom = 29.0
+text = "PONTOS: 0
+"
+label_settings = SubResource("LabelSettings_2ccmt")
+script = ExtResource("4_w4l6c")
+
+[node name="HealthLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 94.0
+offset_bottom = 55.0
+text = "VIDAS: 5
+"
+label_settings = SubResource("LabelSettings_qr32r")
+script = ExtResource("5_05xj5")
+
+[node name="RetryScreen" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.329412)
+
+[node name="Label" type="Label" parent="UserInterface/RetryScreen"]
+top_level = true
+layout_mode = 0
+offset_left = 317.0
+offset_top = 286.0
+offset_right = 890.0
+offset_bottom = 373.0
+text = "Suas vidas acabaram!
+Aperte ESPAÇO para tentar novamente!"
+label_settings = SubResource("LabelSettings_g0qyk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLevelScreen" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.329412)
+
+[node name="Label" type="Label" parent="UserInterface/NextLevelScreen"]
+top_level = true
+layout_mode = 0
+offset_left = 357.0
+offset_top = 272.0
+offset_right = 837.0
+offset_bottom = 404.0
+text = "PARABÉNS! 
+Você alcançou a próxima fase!
+Aperte ESPAÇO para continuar!"
+label_settings = SubResource("LabelSettings_wafct")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.392157, 0.72549, 0.996078, 0.301961)
+
+[node name="coraltree" parent="." instance=ExtResource("6_4nk4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 23)
+
+[node name="coraltree2" parent="." instance=ExtResource("6_4nk4x")]
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -17, 0, -16)
+
+[node name="coraltree3" parent="." instance=ExtResource("6_4nk4x")]
+transform = Transform3D(-0.388229, 0, -1.44889, 0, 1.5, 0, 1.44889, 0, -0.388229, 15, 0, 20)
+
+[node name="coralespiral" parent="." instance=ExtResource("7_wsfn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -16)
+
+[node name="coralespiral2" parent="." instance=ExtResource("7_wsfn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -14)
+
+[node name="coralbolha" parent="." instance=ExtResource("8_pa3ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -14)
+
+[node name="coralbolha2" parent="." instance=ExtResource("8_pa3ci")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18, 0, 25)
+
+[node name="coralespiral3" parent="." instance=ExtResource("7_wsfn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 20)
+
+[node name="coralespiral4" parent="." instance=ExtResource("7_wsfn5")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 12, 0, 21)
+
+[node name="coralespiral5" parent="." instance=ExtResource("7_wsfn5")]
+transform = Transform3D(1.17, 0, 0, 0, 1.17, 0, 0, 0, 1.17, 14, 0, 17)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+omni_range = 85.026
+omni_attenuation = -0.099
+
+[connection signal="catch" from="Player_agua" to="." method="_on_player_agua_catch"]
+[connection signal="catch" from="Player_agua" to="UserInterface/ScoreLabel" method="_on_player_agua_catch"]
+[connection signal="hit" from="Player_agua" to="." method="_on_player_agua_hit"]
+[connection signal="hit" from="Player_agua" to="UserInterface/HealthLabel" method="_on_player_agua_hit"]
+[connection signal="moved" from="Player_agua" to="." method="_on_player_agua_moved"]
+[connection signal="timeout" from="AmigoTimer" to="." method="_on_amigo_timer_timeout"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb6wqwr54iwmc"]
+
+[ext_resource type="Script" path="res://niveis/ar/mob.gd" id="1_qbm8r"]
+[ext_resource type="PackedScene" uid="uid://df03skmjof2a4" path="res://niveis/ar/Corvo_final.glb" id="2_4xb1j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f4oxx"]
+radius = 2.9
+
+[node name="mob" type="CharacterBody3D" groups=["mob"]]
+collision_layer = 2
+script = ExtResource("1_qbm8r")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Corvo_final" parent="Pivot" instance=ExtResource("2_4xb1j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("SphereShape3D_f4oxx")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

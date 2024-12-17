@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl5rq6fvdcsrf"]
+
+[ext_resource type="Script" path="res://niveis/ar/player.gd" id="1_1p452"]
+[ext_resource type="PackedScene" uid="uid://d0hq1c3gh4mb6" path="res://niveis/ar/KakaPrime.glb" id="2_k00qh"]
+[ext_resource type="AudioStream" uid="uid://ol4fxtoivdk8" path="res://niveis/ar/Kaka_Triste.ogg" id="3_eooom"]
+[ext_resource type="AudioStream" uid="uid://hwh3tegs77ms" path="res://niveis/ar/Kaka_Feliz.ogg" id="4_b2cxc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kfo6o"]
+height = 4.0
+radius = 0.7
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_os51y"]
+height = 4.0
+radius = 0.7
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_1p452")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_kfo6o")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="KakaPrime" parent="Pivot" instance=ExtResource("2_k00qh")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("CylinderShape3D_os51y")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eooom")
+volume_db = 10.833
+
+[node name="EagleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b2cxc")
+volume_db = 10.111
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="kill_aguia" from="." to="." method="_on_kill_aguia"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

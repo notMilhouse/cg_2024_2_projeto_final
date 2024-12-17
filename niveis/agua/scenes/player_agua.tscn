@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3dqtg4ixmken"]
+
+[ext_resource type="Script" path="res://niveis/agua/scenes/player_agua.gd" id="1_tio4l"]
+[ext_resource type="PackedScene" uid="uid://4f74hijj4t1d" path="res://niveis/agua/assets/kaka/5YearsOldBoy.glb" id="2_fn8x6"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7kft3"]
+animation = &"Nadar"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpbwq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w4kjv"]
+states/Nadar/node = SubResource("AnimationNodeAnimation_7kft3")
+states/Nadar/position = Vector2(424, 100)
+states/Start/position = Vector2(201, 100)
+transitions = ["Start", "Nadar", SubResource("AnimationNodeStateMachineTransition_dpbwq")]
+graph_offset = Vector2(-41, -9)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_65q5a"]
+radius = 1.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ku1ui"]
+height = 1.5
+radius = 1.5
+
+[node name="Player_agua" type="CharacterBody3D"]
+collision_mask = 14
+script = ExtResource("1_tio4l")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="5YearsOldBoy" parent="Pivot" instance=ExtResource("2_fn8x6")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 2)
+
+[node name="Skeleton3D" parent="Pivot/5YearsOldBoy/Esqueleto" index="0"]
+bones/4/rotation = Quaternion(0.55207, 0.520559, 0.485457, -0.434244)
+bones/5/rotation = Quaternion(-0.315912, 0.587211, -0.2141, 0.713824)
+bones/27/rotation = Quaternion(0.55207, -0.520559, -0.485457, -0.434245)
+bones/28/rotation = Quaternion(0.394629, -0.000878736, 0.229865, 0.889623)
+bones/55/rotation = Quaternion(0.0570531, 0.99817, 0.0199515, -0.00170296)
+bones/56/rotation = Quaternion(-3.55811e-07, 0.613304, 0.789847, -1.19415e-07)
+bones/60/rotation = Quaternion(0.9922, 0.0638794, 0.0311522, -0.102414)
+bones/63/rotation = Quaternion(0.938528, 0.000262894, -0.0116782, 0.345005)
+bones/64/rotation = Quaternion(0.0705111, -0.0117513, -0.0630223, 0.995449)
+bones/65/rotation = Quaternion(-0.704209, 0.0444457, -0.0442447, 0.707218)
+
+[node name="AnimationTree" type="AnimationTree" parent="Pivot"]
+root_node = NodePath("../5YearsOldBoy")
+tree_root = SubResource("AnimationNodeStateMachine_w4kjv")
+anim_player = NodePath("../5YearsOldBoy/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_65q5a")
+
+[node name="CharacterDetector" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterDetector"]
+shape = SubResource("CylinderShape3D_ku1ui")
+
+[connection signal="body_entered" from="CharacterDetector" to="." method="_on_character_detector_body_entered"]
+
+[editable path="Pivot/5YearsOldBoy"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcfsubgeesbua"]
+
+[ext_resource type="Script" path="res://niveis/marte/scripts/Enemy.gd" id="1_xne4k"]
+[ext_resource type="PackedScene" uid="uid://djy71ccof07ad" path="res://niveis/marte/scenes/malciano_animado.tscn" id="2_s2kqi"]
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_xne4k")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+volume_db = -15.0
+
+[node name="Malciano animado" parent="." instance=ExtResource("2_s2kqi")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)

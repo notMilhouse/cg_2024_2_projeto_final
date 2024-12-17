@@ -1,0 +1,456 @@
+[gd_scene load_steps=25 format=3 uid="uid://d3icya6p4g4ha"]
+
+[ext_resource type="PackedScene" uid="uid://b3dqtg4ixmken" path="res://niveis/floresta/Cenas/player.tscn" id="1_lox15"]
+[ext_resource type="Script" path="res://niveis/floresta/Cenas/Códigos/main.gd" id="1_wjhy3"]
+[ext_resource type="Texture2D" uid="uid://c2cobgswnk0th" path="res://niveis/floresta/textures/Vegetação/Vegetation (31).png" id="2_jjs0s"]
+[ext_resource type="Script" path="res://niveis/floresta/Cenas/Códigos/score_label.gd" id="3_bkxlk"]
+[ext_resource type="Script" path="res://niveis/floresta/Cenas/Códigos/health_label.gd" id="4_wiqmn"]
+[ext_resource type="Texture2D" uid="uid://bs4rq1m4pfxpy" path="res://niveis/floresta/textures/BackGround/Stylized Sky Background (11).png" id="6_wiw1p"]
+[ext_resource type="PackedScene" uid="uid://d0fhvvy8vp1vi" path="res://niveis/floresta/Cenas/amigo.tscn" id="7_sb74a"]
+[ext_resource type="PackedScene" uid="uid://dre4grvswryha" path="res://niveis/floresta/textures/Tree_Illustration_1129211034_texture.fbx" id="8_scye2"]
+[ext_resource type="AudioStream" uid="uid://df6brv0of73ra" path="res://niveis/floresta/sounds/Kaka_Triste.wav" id="9_tpkjt"]
+[ext_resource type="AudioStream" uid="uid://dfbkm8qk5oxp8" path="res://niveis/floresta/sounds/Kaka_Feliz (1).wav" id="10_geihj"]
+[ext_resource type="AudioStream" uid="uid://dv8rf1d7tpx33" path="res://niveis/floresta/sounds/ambiente.wav" id="11_t607r"]
+[ext_resource type="AudioStream" uid="uid://dxiamn2rij4ny" path="res://niveis/floresta/sounds/lobo.wav" id="12_g3387"]
+[ext_resource type="AudioStream" uid="uid://c6bnuxbqaw84v" path="res://niveis/floresta/sounds/flecha.wav" id="13_pepw5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwcb1"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeb2c"]
+albedo_texture = ExtResource("2_jjs0s")
+metallic = 0.95
+emission_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1cti"]
+material = SubResource("StandardMaterial3D_qeb2c")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Curve3D" id="Curve3D_5q1q7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -29, 0, -16, 0, 0, 0, 0, 0, 0, 29, 0, -16, 0, 0, 0, 0, 0, 0, 29, 0, 17, 0, 0, 0, 0, 0, 0, -29, 0, 17, 0, 0, 0, 0, 0, 0, -29, 0, -16),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldree"]
+albedo_color = Color(0.227451, 0.239216, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8adub"]
+material = SubResource("StandardMaterial3D_ldree")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n15w2"]
+panorama = ExtResource("6_wiw1p")
+
+[sub_resource type="Sky" id="Sky_yrjp6"]
+sky_material = SubResource("PanoramaSkyMaterial_n15w2")
+
+[sub_resource type="Environment" id="Environment_h24ha"]
+background_mode = 2
+sky = SubResource("Sky_yrjp6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1vix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_db37u"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_wjhy3")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_gwcb1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_v1cti")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.248403, -0.617992, -0.74591, 0, -0.770046, 0.637989, -0.968657, -0.158478, -0.191282, -24, 15, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_lox15")]
+
+[node name="Amigo" parent="." instance=ExtResource("7_sb74a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 15, 1)
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_5q1q7")
+
+[node name="SpawnPosition" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-4.37111e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.37111e-08, -29, 0, -16)
+
+[node name="Cylinders" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -16)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -29, 0, 17)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -16)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 17)
+mesh = SubResource("CylinderMesh_8adub")
+
+[node name="AmigoTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 94.0
+offset_bottom = 29.0
+text = "Lobos Restantes: 10
+"
+script = ExtResource("3_bkxlk")
+
+[node name="HealthLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 94.0
+offset_bottom = 55.0
+text = "Vida: 3
+"
+script = ExtResource("4_wiqmn")
+
+[node name="RetryScreen" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.329412)
+
+[node name="Label" type="Label" parent="UserInterface/RetryScreen"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 352.0
+offset_right = 750.0
+offset_bottom = 375.0
+text = "Para tentar novamente, aperte ESPAÇO"
+
+[node name="NextLevelScreen" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.329412)
+
+[node name="Label" type="Label" parent="UserInterface/NextLevelScreen"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 352.0
+offset_right = 750.0
+offset_bottom = 375.0
+text = "Para seguir para a próxima fase, 
+aperte ESPAÇO"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h24ha")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.351286, 0.936268, 0, -0.936268, 0.351286, -7.62939e-06, 40.4329, 16.5765)
+
+[node name="Arvores" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -43.9433, 10.073, -10.9105)
+
+[node name="Tree_Illustration_1129211034_texture2" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 1.3)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture2"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture2/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture2/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+
+[node name="Tree_Illustration_1129211034_texture15" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture15"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture15/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture15/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture3" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 2.4)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture3"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture3/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture3/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture4" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, 3.3)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture4"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture4/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture4/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture5" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0, 3.4)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture5"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture5/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture5/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture6" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, 3.5)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture6"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture6/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture6/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture7" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 0, 3.2)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture7"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture7/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture7/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture8" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1.5)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture8"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture8/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture8/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture9" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1, 0, 0)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture9"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture9/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture9/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture10" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -1.2)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture10"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture10/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture10/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture11" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 0, -1.2)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture11"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture11/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture11/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture12" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, -1.4)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture12"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture12/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture12/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture13" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800002, 0, -1.3)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture13"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture13/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture13/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Tree_Illustration_1129211034_texture14" parent="Arvores" instance=ExtResource("8_scye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -1.3)
+
+[node name="Area3D" type="StaticBody3D" parent="Arvores/Tree_Illustration_1129211034_texture14"]
+collision_layer = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/Tree_Illustration_1129211034_texture14/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+shape = SubResource("BoxShape3D_s1vix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arvores/Tree_Illustration_1129211034_texture14/Area3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.55, 0, 0, 0, 0.66, 0, -0.7, 0)
+visible = false
+layers = 15
+mesh = SubResource("BoxMesh_db37u")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Triste" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_tpkjt")
+volume_db = 8.0
+pitch_scale = 1.1
+
+[node name="Feliz" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_geihj")
+volume_db = 8.0
+pitch_scale = 1.1
+
+[node name="Ambiente" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_t607r")
+autoplay = true
+playback_type = 1
+
+[node name="Kill" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_g3387")
+
+[node name="Flecha" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pepw5")
+volume_db = 12.18
+
+[connection signal="amigo_livre" from="." to="Amigo" method="_on_main_amigo_livre"]
+[connection signal="main_kill" from="." to="UserInterface/ScoreLabel" method="_on_main_main_kill"]
+[connection signal="arrow" from="Player" to="." method="_on_player_arrow"]
+[connection signal="catch" from="Player" to="." method="_on_player_catch"]
+[connection signal="health" from="Player" to="." method="_on_player_health"]
+[connection signal="health" from="Player" to="UserInterface/HealthLabel" method="_on_player_health"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="hit" from="Player" to="UserInterface/HealthLabel" method="_on_player_hit"]
+[connection signal="timeout" from="AmigoTimer" to="." method="_on_amigo_timer_timeout"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_timer_timeout"]

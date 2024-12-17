@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b243mw2dwhof6"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_qlgcc"]
-[ext_resource type="Texture2D" uid="uid://ejhkgaobleum" path="res://menubg.jpg" id="2_51see"]
+[ext_resource type="Texture2D" uid="uid://dbvmyu3rmbcvl" path="res://kaka_bg.jpeg" id="2_iobnb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gegjy"]
 font_size = 72
@@ -22,17 +22,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_51see")
+texture = ExtResource("2_iobnb")
 expand_mode = 1
 stretch_mode = 6
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 144.0
-offset_right = 370.0
-offset_bottom = 167.0
-text = "Kaka's Ultra Adventures"
+offset_left = 248.0
+offset_top = 56.0
+offset_right = 898.0
+offset_bottom = 155.0
+text = "Aventuras de Kaká"
 label_settings = SubResource("LabelSettings_gegjy")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,42 +44,46 @@ offset_bottom = 40.0
 
 [node name="PlayCaverna" type="Button" parent="MenuItems"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 360.0
-offset_right = 273.0
-offset_bottom = 417.0
+offset_left = 128.0
+offset_top = 560.0
+offset_right = 281.0
+offset_bottom = 617.0
 text = "Nível Caverna"
 
 [node name="PlayFloresta" type="Button" parent="MenuItems"]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 360.0
-offset_right = 465.0
-offset_bottom = 417.0
+offset_left = 320.0
+offset_top = 560.0
+offset_right = 473.0
+offset_bottom = 617.0
 text = "Nível Floresta"
 
 [node name="PlayAgua" type="Button" parent="MenuItems"]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 360.0
-offset_right = 657.0
-offset_bottom = 417.0
+offset_left = 512.0
+offset_top = 560.0
+offset_right = 665.0
+offset_bottom = 617.0
 text = "Nível Água"
 
 [node name="PlayAr" type="Button" parent="MenuItems"]
 layout_mode = 0
-offset_left = 696.0
-offset_top = 360.0
-offset_right = 849.0
-offset_bottom = 417.0
+offset_left = 704.0
+offset_top = 560.0
+offset_right = 857.0
+offset_bottom = 617.0
 text = "Nível Ar"
 
 [node name="PlayMarte" type="Button" parent="MenuItems"]
 layout_mode = 0
-offset_left = 888.0
-offset_top = 360.0
-offset_right = 1041.0
-offset_bottom = 417.0
+offset_left = 896.0
+offset_top = 560.0
+offset_right = 1049.0
+offset_bottom = 617.0
 text = "Nível Marte"
 
 [connection signal="pressed" from="MenuItems/PlayCaverna" to="." method="_on_play_caverna_pressed"]
+[connection signal="pressed" from="MenuItems/PlayFloresta" to="." method="_on_play_floresta_pressed"]
+[connection signal="pressed" from="MenuItems/PlayAgua" to="." method="_on_play_agua_pressed"]
+[connection signal="pressed" from="MenuItems/PlayAr" to="." method="_on_play_ar_pressed"]
+[connection signal="pressed" from="MenuItems/PlayMarte" to="." method="_on_play_marte_pressed"]
